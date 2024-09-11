@@ -41,3 +41,4 @@ try {
     // Attraper l'exception lancée
     echo $e->getMessage();
 }
+
