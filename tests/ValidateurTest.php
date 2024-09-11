@@ -1,11 +1,12 @@
 <?php
 require_once './vendor/autoload.php';
+
 use App\Validateur;
 use PHPUnit\Framework\TestCase;
 
 Class ValidateurTest extends TestCase {
 
-        private \App\Validateur $validateur;
+    private \App\Validateur $validateur;
     protected function setUp():void
     {
         // Cette méthode est appelé lors de l'exécution de chaque test

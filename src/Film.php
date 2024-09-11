@@ -1,13 +1,15 @@
 <?php
+namespace App;
 
-require_once '../src/Acteur.php';
+require_once './vendor/autoload.php';
+require_once 'Acteur.php';
 
 
 class Film{
     // Atrributs
     private string $titre;
     private string $realisateur;
-    private DateTime $dateSortie;
+    private \DateTime $dateSortie;
 
     // Association avec la class Acteur
     private array $acteur = [];
@@ -23,7 +25,7 @@ class Film{
      * @param string $realisateur
      * @param DateTime $dateSortie
      */
-    public function __construct(string $titre, string $realisateur, DateTime $dateSortie) // <-- = Prototype
+    public function __construct(string $titre, string $realisateur, \DateTime $dateSortie) // <-- = Prototype
     {
         // Implémentation
         $this->titre = $titre;
@@ -43,19 +45,24 @@ class Film{
         return $this->realisateur;
     }
 
-    public function getDateSortie(): DateTime
+    public function getDateSortie(): \DateTime
     {
         return $this->dateSortie;
     }
 
     public function getAnciennete(){
-        $dateJour = new DateTime();
+        $dateJour = new \DateTime();
         $intervalle = $dateJour->diff($this->dateSortie);
         return $intervalle ->y;
     }
 
-    public function addActeur( Acteur $acteur):void
+    public function addActeur(Acteur $acteur):void
     {
+        for ($i = 0; $i < count($this->acteur); $i++) {
+            if ($this->acteur[$i] == $acteur) {
+                throw new \Exception("Cet acteur existe déjà");
+            }
+        }
         $this->acteur[] = $acteur;
     }
 

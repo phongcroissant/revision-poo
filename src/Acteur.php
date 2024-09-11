@@ -1,5 +1,5 @@
 <?php
-
+namespace App;
 class Acteur
 {
     private $nom;

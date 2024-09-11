@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-use PHPUnit\Framework\TestCase;
 class Validateur
 {
         // Méthode qui vérifie si un nombre est strictement positif
